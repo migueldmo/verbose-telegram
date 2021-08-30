@@ -1,0 +1,616 @@
+from time import sleep
+bolsa=["Varinha"]   
+def check_point(): 
+    bolsaa = [bolsa]
+    print("\nVocê gostaria de voltar para o seu CHECK POINT? (sim ou não)")  
+
+    #converter resposta para o minúsculo 
+
+    respostacp = input("\nResposta: ").lower() 
+
+    while (respostacp != "sim") and (respostacp != "não"):
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostacp = input("\nResposta: ").lower()
+
+    if "sim" in respostacp: 
+      arquivo = open("Check_point.txt","r")
+      a = arquivo.readlines()
+      b=[a]
+      if "Labirinto\n" in b[-1]:
+
+        if ('Capa' in bolsa):
+          if 'Ovo' in bolsa:
+            bolsa.pop(-1)
+          elif 'Ovo' not in bolsa:
+            bolsa.pop(-1)
+            bolsa.pop(-1)
+            bolsa.append("Ovo")
+            bolsa.append("Planta")
+
+        elif ('Capa' not in bolsa):
+          if 'Ovo' not in bolsa:
+            bolsa.pop(-1)
+            bolsa.append("Ovo")
+            bolsa.append("Planta")
+
+        elif "Ovo" in bolsa[-1]:
+          labirinto()
+
+        else:
+          bolsa.append("Ovo")
+          labirinto()
+        
+        labirinto()
+
+      elif "Oceano\n" in b[-1]:
+
+        if ('Planta' in bolsa):
+          bolsa.pop(-1)
+          
+        if ('Naovarinha' in bolsa):
+          bolsa.pop(-1)
+        Oceano()
+        arquivo.close()
+
+    elif "não" in respostacp:
+      print("\nOK então")
+      play_again() 
+
+def play_again():
+    print("\nVocê gostaria de reiniciar o jogo? (sim ou não)")
+
+    respostapa = input("\nResposta: ").lower()
+
+    if (respostapa != "sim") and (respostapa != "não"):
+      while (respostapa != "sim") and (respostapa != "não"):
+        print("Resposta inválida, por favor insira uma nova resposta!")
+        respostapa = input("\nResposta: ").lower()
+
+    if "sim" in respostapa:
+      print("Ok, vamos lá!")
+      start()
+    
+    elif "não" in respostapa:
+      print("\nOk então, GAME OVER!")
+      exit()
+
+def start():
+    arquivo = open("Check_point.txt", "w")
+    arquivo.close()
+    print(67*"-", "O TORNEIO TRIBRUXO", 67*"-")
+    input("Pressione Enter para começar ")
+    sleep(0.5)
+    print("Carregando..")
+    sleep(1.5)
+    print("\nVocê é um estudante de Hogwarts, em um dos primeiros anos.")
+    sleep(1)   
+    print("\nNesse ano, está havendo a disputado Torneio Tribruxo, gostaria de por seu nome no Cálice de Fogo?.") 
+    sleep(1) 
+    print("\nResponda com sim ou não.") 
+    
+    resposta = input("\nResposta: ").lower()
+
+    if (resposta != "sim") and (resposta != "não"):
+      while (resposta != "sim") and (resposta != "não"):
+        sleep(1) 
+        print("Resposta inválida, por favor insira uma nova resposta!")
+        resposta = input("\nResposta: ").lower()
+
+    if "sim" in resposta:
+      print("Sorteando")
+      sleep(2)  
+      print("\nNossa, que incrível você foi sorteado para participar do torneio.")
+      sleep(1) 
+      print("\nO primeiro desafio é combater o dragão.") 
+      dragao() 
+
+    if "não" in resposta:
+      sleep(1)  
+      print("\nPor acaso, seu nome foi colocado no Cálice e você, infelizmente, foi sorteado para participar do torneio.")
+      sleep(1) 
+      print("\nO primeiro desafio é combater o dragão.") 
+      dragao()
+
+def dragao():
+    print("\nVocê ouviu falar sobre um sorteio de qual dragão cada um combaterá.")
+    sleep(1)  
+    print("\nAssim, tem a opção de ir investigar mais")
+    sleep(1) 
+    print("\nVocê gostaria de ir?")
+    sleep(1) 
+    print("\nResponda com sim ou não.") 
+    
+    respostad = input("\nResposta: ").lower()
+
+    while (respostad != "sim") and (respostad != "não"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostad = input("\nResposta: ").lower()
+
+    if "sim" in respostad:
+      sleep(1)  
+      print("\nInvestigando você é levado para a floresta proibida e acaba descobrindo que o dragão o qual combaterá é Rabo-Córneo Hungaro.") 
+      dragao1() 
+
+    elif "não" in respostad:
+      sleep(1)  
+      print("\nNossa, que corajoso gosta de desafios.") 
+      dragao2() 
+
+def dragao1():
+    sleep(1)  
+    print("\nAgora, já sabendo o dragão, um amigo seu te indica apenas treinar alguns feitiços e ir sem mais nada.")
+    sleep(1)  
+    print("\nVocê gostaria de seguir essa dica?")
+    sleep(1) 
+    print("\nResponda com sim ou não.") 
+
+    respostadd = input("\nResposta: ").lower()
+
+    while (respostadd != "sim") and (respostadd != "não"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostadd = input("\nResposta: ").lower()
+
+    if "não" in respostadd:
+      sleep(1)  
+      print("\nVocê consegue então buscar sua vassoura e se prepara para o dia do combate.") 
+      bolsa.append("Vassoura")
+      dragao2() 
+
+    elif "sim" in respostadd:
+      sleep(1)  
+      print("\nJá que você acha desnecessário buscar outro objeto, vamos direto ao combate.") 
+      dragao2() 
+
+def dragao2(): 
+    bolsaa = [bolsa]
+    sleep(1)  
+    print("\nNo dia do combate você, nervoso, aguarda sua vez.")
+    sleep(1) 
+    print("\nChegando a sua vez, você olha para o dragão e começa a utilizar alguns feitiços.")
+
+    if "Vassoura" in bolsaa[-1]:
+      sleep(1)  
+      print("\nVocê então se lembrou da sua vassoura.")
+      sleep(1) 
+      print("\nDeseja utiliza-lá?")
+      sleep(1)  
+      print("\nResponda com sim ou não.") 
+
+      respostaddd = input("\nResposta: ").lower() 
+
+      while (respostaddd != "sim") and (respostaddd != "não"):
+        sleep(1) 
+        print("Resposta inválida, por favor insira uma nova resposta!")
+        respostaddd = input("\nResposta: ").lower()
+
+      if "sim" in respostaddd:
+        sleep(1)  
+        print("\nVocê voa com sua vassoura fugindo do dragão que se soltou das correntes.")
+        sleep(1)  
+        print("\nAssim você conseguiu fugir dele e pegou seu grande ovo.") 
+        bolsa.append("Ovo")
+        Oceano() 
+
+      elif "não" in respostaddd:
+        sleep(1) 
+        print("\nO dragão com dimensões colossais se desprende de suas correntes.")
+        sleep(1) 
+        print("\nVocê, sem ter para onde fugir, acaba sendo queimado pelo dragão.")
+        sleep(1.5) 
+        print("\nVocê morreu!")
+        play_again()
+    
+    else:
+      sleep(1) 
+      print("\nO dragão com dimensões colossais se desprende de suas correntes.")
+      sleep(1) 
+      print("\nVocê, sem ter para onde fugir, acaba sendo quimado pelo dragão.")
+      sleep(1.5) 
+      print("\nVocê morreu!")
+      play_again()
+
+def Oceano():
+    arquivo = open("Check_point.txt", "a")
+    frases=[]
+    frases.append("Oceano\n")
+    arquivo.writelines(frases)
+    arquivo.close()
+    bolsaa=[bolsa]
+    sleep(1.5) 
+    print("\nCHECK POINT")
+    sleep(1) 
+    print("\nVocê conseguiu por pouco!")
+    sleep(1) 
+    print("\nAgora que tem o ovo, você ouviu boatos que ao abrir o ovo em baixo da água conseguirá uma dica do proximo desafio.")
+    sleep(1) 
+    print("\nGostaria de tentar?")
+    sleep(1) 
+    print("\nResponda com sim ou não.") 
+
+    respostao = input("\nResposta: ").lower()
+
+    if (respostao != "sim") and (respostao != "não"):
+      while (respostao != "sim") and (respostao != "não"):
+        sleep(1) 
+        print("Resposta inválida, por favor insira uma nova resposta!")
+        respostao = input("\nResposta: ").lower()
+
+    if "sim" in respostao:
+      sleep(1) 
+      print("\nVocê vai até a sua banheria e tenta abrir o ovo.")
+      sleep(1) 
+      print("\nAo abrir ele percebe que o próximo teste acontecerá.")
+      bolsaa = [bolsa]
+      Oceano1()
+
+    if "não" in respostao:
+      sleep(1) 
+      print("\nAo abrir o ovo você se assusta com o barulho agudo e acaba quebrando sua varinha.")
+      sleep(1) 
+      print("\nPouco antes da prove descobre que a prova será no lago.")
+      
+      bolsa.append("Naovarinha")
+      Oceano1()
+
+def Oceano1():
+    bolsaa=[bolsa]
+    sleep(1) 
+    print("\nVocê, ao saber da dica, decide pensar em um jeito de passar pela prova.")
+    sleep(1) 
+    print("\nEntão, você vai a biblioteca.")
+    sleep(1) 
+    print("\nVocê pode então estudar uns feitiços ou umas plantas.")
+    sleep(1) 
+    print("\nResponda com Plantas ou Feitiços")
+
+    respostaoo = input("\nResposta: ").lower()
+
+    while (respostaoo != "plantas") and (respostaoo != "feitiços"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostaoo = input("\nResposta: ").lower()
+
+    if "plantas" in respostaoo:
+      sleep(1) 
+      print("\nDepois de ler diversos livros você acaba não encontrando nada.")
+      sleep(1) 
+      print("\nAssim percebe que pode pedir ajuda a alguem que entende mais de plantas, ou pode tentar encontrar um feitiço para a prova.")
+      sleep(1) 
+      print("\nResponda Plantas para pedir ajuda ou Feitiços para procurar um feitiço")
+
+      d = input("\nResposta: ").lower()
+
+      while (d != "plantas") and (d != "feitiços"):
+        sleep(1) 
+        print("Resposta inválida, por favor insira uma nova resposta!")
+        d = input("\nResposta: ").lower()
+
+      if "plantas" in d:
+        sleep(1) 
+        print("\nVocê encontra uma amiga que sabe muito de plantas.")
+        sleep(1) 
+        print("\nEla então te entrega uma planta para comer antes da prova que te trará a habilidade de respirar em baixo da água.")
+        bolsa.append("Planta")
+        Oceano2()
+
+      elif "feitiços" in d:
+        sleep(1) 
+        print("\nDepois de desistir das plantas, você encontra de forma rápida um feitiço que te torna em meio tubarão.")
+        sleep(1) 
+        print("\nPodendo, assim, realizar a prova")
+        Oceano2()
+
+    elif "feitiços" in respostaoo:
+      sleep(1) 
+      print("\nChegando na biblioteca encontra um feitiço que te transforma em metade tubarão, te permitindo realizar a prova.")
+      Oceano2()
+
+def Oceano2():
+    bolsaa=[bolsa]
+    sleep(1) 
+    print("\nNo dia do desafio, é revelado que a prova será salvar uma pessoa importante para você do fundo do mar.")
+    sleep(1) 
+    print("\nEntão no momento da prova você faz suas preparações.")
+
+    if "Planta" in bolsa[-1]:
+      sleep(1) 
+      print("\nNo início da prova você come a planta e pula na água.")
+      sleep(1) 
+      print("\nLogo acaba descobrindo onde está seu amigo, Ron, e vai em sua diração.")
+      sleep(1) 
+      print("\nEntão sereias do mar começam a te atacar.")
+
+      if "Naovarinha" in bolsaa[-1]:
+        sleep(1) 
+        print("\nCom sua varinha quebrada você não consegue realizar nenhum feitiço.")
+        sleep(1) 
+        print("\nAssim, as sereias te afogam no fundo do mar e sem ninguém para salvar seu amigo ele morre junto.")
+        check_point()
+
+      else:
+        sleep(1) 
+        print("\nCom sua varinha seu personagem deferi um feitiço conseguindo se salvar.")
+        sleep(1) 
+        print("\nAssim, salva seu amigo e retorna para cima concluindo a prova.")
+        labirinto()
+
+    else:
+      sleep(1) 
+      print("\nNo início da prova você usa o feitiço e cai na água")
+      sleep(1) 
+      print("\nPorém como você havia treinado pouco, o tempo do feitiço acaba e você acaba se afogando.")
+      sleep(1) 
+      print("\nAssim seu amigo morre junto sem ter ninguém pra salva-lo.")
+      check_point()
+
+def labirinto():
+    arquivo = open("Check_point.txt", "a")
+    frases=[]
+    frases.append("Labirinto\n")
+    arquivo.writelines(frases)
+    arquivo.close()
+    bolsaa = [bolsa]
+    sleep(1.5) 
+    print("\nCHECK POINT")
+    sleep(1) 
+    print("\nParbéns! Você chegou na terceira e última etapa do Torneio!")
+    sleep(1) 
+    print("\nApós a prova do lago você se organiza para ir ao salão principal, onde o Ministro da Magia fará um pronunciamento.")
+    sleep(1) 
+    print("\nSaindo do seu dormitório seu amigo Ron te entrega sua capa e você percebe que tem algo em seus bolsos")
+    sleep(1) 
+    print("\nGostaria de saber o que é?")
+    sleep(1) 
+    print("\nResponda com sim ou não.") 
+    
+    respostal = input("\nResposta: ").lower()
+
+    while (respostal != "sim") and (respostal != "não"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostal = input("\nResposta: ").lower()
+
+    if "sim" in respostal:
+      sleep(1) 
+      print(bolsaa)
+      sleep(1) 
+      print("\nOk, vamos para o salão agora!")
+      labirinto_1()
+   
+    elif "não" in respostal:
+      sleep(1) 
+      print("\nOk, vamos para o salão...")
+      labirinto_2()
+    
+def labirinto_1():
+    bolsaa = [bolsa]
+    sleep(1) 
+    print("\nAntes do último banquete do Torneio o Ministro informa a todos que a última prova acontecera na próxima noite")
+    sleep(1) 
+    print("\nEssa prova será uma caça ao Cálice de Fogo em um grande labirinto mágico")
+    sleep(1) 
+    print("\nAlém disso ele informa também que cada participante deve entrar no labirinto sozinho e portando sua varinha")
+    sleep(1) 
+    print("\nGanhará aquele que pegar o Cálice primeiro")
+    sleep(1) 
+    print("\n ... ")
+    sleep(2) 
+    print("\nFinalmente chegamos no dia da prova!")
+    sleep(1) 
+    print("\nTodos os participantes foram chamados para a entrada do labirinto")
+    sleep(1) 
+    print("\nPorém, na saída do seu dormitório, você avista sua capa da invisibilidade, gostaria de pegá-la?")
+    sleep(1) 
+    print("\nResponda com sim ou não.") 
+
+    respostall = input("\nResposta: ").lower()
+
+    while (respostall!= "sim") and (respostall != "não"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostall = input("\nResposta: ").lower()
+
+    if "sim" in respostall:
+      bolsa.append("capa")
+      sleep(1) 
+      print("\nAgora você também tem uma capa! Vamos para a prova!")
+      labirinto_2()
+
+    elif "não" in respostall:
+      bolsaa = [bolsa]
+      sleep(1) 
+      print("\nOK, vamos para a prova!")
+      labirinto_2()
+    
+def labirinto_2():
+    bolsaa = [bolsa]
+    sleep(1)  
+    print("\nFoi dada a largada!")
+    sleep(1.5) 
+    print("\nVocê e todos os demais competidores entram correndo no Labirinto mas logo se separam e você percebe que está sozinho")
+    sleep(1) 
+    print("\nApós andar sozinho por alguns minutos você percebe que está sendo seguido, você gostaria de se virar a direita ou a esquerda para se esconder?")
+    sleep(1) 
+    print("\nResponda com direita ou esquerda")
+
+    respostalll = input("\nResposta: ").lower()
+
+    while (respostalll != "direita") and (respostalll != "esquerda"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostalll = input("\nResposta: ").lower()
+
+    if "direita" in respostalll:
+      sleep(1) 
+      print("\nVamos para a direita então!")
+      labirinto_d()
+
+    elif "esquerda" in respostalll:
+      sleep(1) 
+      print("\nVamos para a esquerda então!")
+      labirinto_e()
+
+def labirinto_d():
+    bolsaa = [bolsa]
+    sleep(1) 
+    print("\nSua estratégia não funcionou e o monstro continua seguindo você!")
+    sleep(1) 
+    print("\nApós correr por um tempo você percebe que o mostro é um basilisco, ou seja, uma grande cobra, e decide que precisa enfrentá-la")
+    sleep(1) 
+    print("\nProcurando por opções em sua capa você percebe que dentre seus objetos você pode jogar o ovo do dragão no basilisco")
+    sleep(1) 
+    print("\nOu pode usar sua varinha para a lançar um feitiço")
+    sleep(1) 
+    print("\nVocê irá jogar o ovo ou lançar um feitiço?")
+    sleep(1) 
+    print("\nResponda com ovo ou feitiço")
+
+    respostald = input("\nResposta: ").lower()
+
+    while (respostald != "ovo") and (respostald != "feitiço"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostald = input("\nResposta: ").lower()
+
+    if "ovo" in respostald:
+      sleep(1) 
+      print("\nO basilisco é muito mais forte que o ovo")
+      sleep(1.5) 
+      print("\nO basilisco te atacou e o veneno dele acabou te matando!")
+      check_point()
+
+    elif "feitiço" in respostald:
+      sleep(1) 
+      print("\nVocê conseguiu matar o Basilsico, muito bem!")
+      labirinto_3()
+
+def labirinto_e():
+    bolsaa = [bolsa]
+    sleep(1) 
+    print("\nO monstro não está mais te seguindo, no entanto você percebe que há outro competidor aqui.")
+    sleep(1) 
+    print("\nDepois de tentar conversar com o competidor você percebe que ele está possuido e vai te atacar")
+    sleep(1) 
+    print("\nProcurando por opções em sua capa você percebe que dentre seus objetos você pode jogar o ovo do dragão no outro participante ou usar sua varinha para a lançar um feitiço contra ele")
+    sleep(1) 
+    print("\nVocê irá jogar o ovo ou lançar um feitiço?")
+    sleep(1) 
+    print("\nResponda com ovo ou feitiço")
+
+    respostae = input("\nResposta: ").lower()
+
+    while (respostae != "ovo") and (respostae != "feitiço"):
+      sleep(1) 
+      print("Resposta inválida, por favor insira uma nova resposta!")
+      respostae = input("\nResposta: ").lower()
+
+    if "ovo" in respostae:
+      sleep(1) 
+      print("\nVocê acertou o ovo na cabeça do outro participante")
+      sleep(1) 
+      print("\nPor sorte o participante está apenas desmaiado!")
+      bolsa.pop(2)
+      labirinto_3()
+
+    elif "feitiço" in respostae:
+      sleep(1) 
+      print("\nSeu feitiço foi muito forte e você matou o outro participante!")
+      sleep(1.5) 
+      print("\nVocê foi desclassificado!")
+      check_point()
+
+def labirinto_3():
+    bolsaa = [bolsa]
+    sleep(1) 
+    print("\nUfa, você passou!")
+    sleep(1) 
+    print("\nAgora, ao continuar você se depara com um hipogrifo")
+    sleep(1) 
+    print("\nSe ele te ver, você terá que lutar. Lembre-se das aulas que você teve no ano anterior, hipogrifos são bastante perigosos!")
+      
+    if "capa" in bolsaa[-1]:
+      sleep(1) 
+      print("\nVocê deseja usar sua capa da invisibilidade?")
+
+      respostaf = input("\nResposta:  ").lower()
+
+      while (respostaf != "sim") and (respostaf != "não"):
+        sleep(1) 
+        print("Resposta inválida, por favor insira uma nova resposta!")
+        respostaf = input("\nResposta: ").lower()
+
+      if "sim" in respostaf:
+        sleep(1) 
+        print("\nOK, agora você está embaixo da capa")
+        fim()
+
+      elif "não" in respostaf:
+        sleep(1) 
+        print("\nOK, vamos sem a capa então")
+        sleep(1) 
+        print("\nO hipogrifo te viu e atacou, você morreu!")
+        check_point()
+      
+    else:
+      sleep(1) 
+      print("\nVocê infelizmente não tem seu capa da invisibilidade e terá que tentar a sorte entre voar ou lançar um feitiço")
+      sleep(1) 
+      print("\nVocê vai lançar o feitiço ou voar?")
+      sleep(1) 
+      print("\nResponda com lançar ou voar")
+
+      respostaff = input("\nResposta: ").lower()
+
+      while (respostaff != "lançar") and (respostaff != "voar"):
+        sleep(1) 
+        print("Resposta inválida, por favor insira uma nova resposta!")
+        respostaff = input("\nResposta: ").lower()
+
+      if "lançar" in respostaff:
+        sleep(1) 
+        print("\nO hipogrifo foi mais esperto que você e conseguiu desviar")
+        sleep(1) 
+        print("\nVocê foi atacado e morreu!")
+        check_point()
+
+      elif "voar" in respostaff:
+        sleep(1) 
+        print("\nVocê até voa bem, porém o hipogrifo voa melhor")
+        sleep(1) 
+        print("\nO hipogrifo te derrubou da varinha e você morreu!")
+        sleep(1.5) 
+        check_point()
+
+def fim():
+    sleep(1) 
+    print("\nParabéns!!")
+    sleep(1) 
+    print("\nVocê passou pelo hipogrifo e pegou o Cálice de Fogo antes de todos os outros competidores!")
+    sleep(1) 
+    print("\nVocê é o grande vencedor do Torneio Tribruxo")
+    sleep(2) 
+    arquivo = open("Check_point.txt", "w")
+    arquivo.close()
+    play_again()
+  
+arquivo = open("Check_point.txt","a")
+arquivo.close()
+arquivo = open("Check_point.txt","r")
+a = arquivo.readlines()
+b=[a]
+if "Oceano\n" in b[-1] or "Labirinto\n" in b[-1]:
+  sleep(1) 
+  print("\nVocê gostaria de jogar da onde parou?")
+  l=input().lower()
+  if "s" in l:
+    if "Labirinto\n" in b[-1]:
+      labirinto()
+    elif "Oceano\n" in b[-1]:
+      Oceano()
+  else:
+    start()
+    arquivo.close()
+else:
+   start()
